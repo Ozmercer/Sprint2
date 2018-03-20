@@ -1,0 +1,28 @@
+/*--------Fonts--------*/
+
+/*----Lato----*/
+
+@font-face {
+    font-family: latoRegular;
+    src: url('../fonts/Lato/Lato-Regular.ttf');
+}
+
+@font-face {
+    font-family: latoBold;
+    src: url('../fonts/Lato/Lato-Bold.ttf');
+}
+
+@font-face {
+    font-family: latoBlack;
+    src: url('../fonts/Lato/LatoBlack');
+}
+/*--------Global--------*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
