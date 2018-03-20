@@ -74,10 +74,12 @@ nav {
     width: 70px;
 }
 
+.logo-holder {
+    position: relative;
+}
 
 .top-menu li img {
-    position: absolute;
-    right: 46%;
+    position: relative;
     top: 1.5%;
 }
 
