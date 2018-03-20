@@ -39,7 +39,13 @@ body {
     margin: 0;
 }
 
+
 a {
     text-decoration: none;
+}
+
+/* -----ABOUT----- */
+.about-info {
+    background-color: #2eb398;
 }
 
