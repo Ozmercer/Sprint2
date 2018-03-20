@@ -45,15 +45,45 @@ a {
 
 .container {
     max-width: 820px;
-    padding: 0 20px;
+    padding: 10px 20px;
     margin: 0 auto;
-
 }
 
 /* -----ABOUT----- */
 article.about {
     background-color: #2eb398;
+    padding: 0 20px;
+}
+
+.about-container {
     border-left: 1px solid #219d84;
     border-right: 1px solid #219d84;
 }
 
+.profile-pic {
+    margin-right: 20px;
+}
+
+.about h2 {
+    margin: 0;
+}
+
+.profile {
+    margin: 10px 0;
+}
+
+.about img {
+    height: 180px;
+    width: 180px;
+    border-radius: 45%;
+    border: 5px solid #1d6e52
+}
+
+.about ul {
+    justify-content: flex-end;
+}
+
+.icon {
+    font-size: 2em;
+    margin: 1px;
+}
