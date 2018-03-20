@@ -14,15 +14,32 @@
 
 @font-face {
     font-family: latoBlack;
-    src: url('../fonts/Lato/LatoBlack');
+    src: url('../fonts/Lato/Lato-Black.ttf');
 }
+
+/*----MavenPro----*/
+
+@font-face {
+    font-family: mavenProRegular;
+    src: url('../fonts/Lato/MavenPro-Regular.ttf')
+}
+
 /*--------Global--------*/
 
 * {
     box-sizing: border-box;
 }
 
+html {
+    font-family: 'latoRegular', sans-serif;
+    font-size: 12px;
+}
+
 body {
     margin: 0;
+}
+
+a {
+    text-decoration: none;
 }
 
