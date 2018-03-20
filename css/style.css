@@ -43,6 +43,23 @@ a {
     text-decoration: none;
 }
 
+/*--------Header--------*/
+
+header {
+    background-color: #323232;
+    color: #ffffff;
+    font-size: 10px;
+    font-family: 'latoBold', sans-serif;
+    line-height: 6.32px;
+    text-transform: uppercase;
+}
+
+.top-menu li a {
+    color: inherit;
+    height: 65px;
+    width: 70px;
+}
+
 .container {
     max-width: 820px;
     padding: 10px 20px;
