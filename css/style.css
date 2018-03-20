@@ -39,7 +39,6 @@ body {
     margin: 0;
 }
 
-
 a {
     text-decoration: none;
 }
@@ -61,8 +60,16 @@ header {
     width: 70px;
 }
 
+.container {
+    max-width: 820px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
 /* -----ABOUT----- */
-.about-info {
+article.about {
     background-color: #2eb398;
+    border-left: 1px solid #219d84;
+    border-right: 1px solid #219d84;
 }
 
