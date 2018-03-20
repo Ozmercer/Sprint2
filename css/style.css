@@ -43,6 +43,10 @@ a {
     text-decoration: none;
 }
 
+p {
+    text-align: justify;
+}
+
 /*--------Layout--------*/
 
 .container {
@@ -104,12 +108,18 @@ article.about {
     border-right: 1px solid #219d84;
 }
 
-.profile-pic {
+#profile1 .profile-pic {
     margin-right: 20px;
+}
+#profile2 .profile-pic {
+    margin-left: 20px;
 }
 
 .about h2 {
     margin: 0;
+}
+.about h3 {
+    margin-top: 5px;
 }
 
 .profile {
@@ -123,11 +133,30 @@ article.about {
     border: 5px solid #1d6e52
 }
 
-.about ul {
+#profile1 ul {
     justify-content: flex-end;
 }
 
 .icon {
     font-size: 2em;
     margin: 1px;
+}
+
+.facebook {
+    color: #3660a0;
+}
+.twitter {
+    color: #0073a7;
+}
+.google {
+    color: #dc5442
+}
+.pinterest {
+    color: #cb2127
+}
+.linkedin {
+    color: #096c9b
+}
+.dribbble {
+    color: #ef558f
 }
