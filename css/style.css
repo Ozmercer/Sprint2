@@ -104,6 +104,20 @@ nav {
 }
 
 /* -----GALLERY----- */
+
+.search-box {
+    width: 20%;
+    color: #2eb398;
+    background-image: url('../img/search.png');
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: 2px 4px;
+    padding: 12px 0px 12px 28px;
+}
+.search-box::placeholder {
+    color: #fff;
+}
+
 .editor {
     /* height: auto;
     display: block;
