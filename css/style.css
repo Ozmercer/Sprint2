@@ -156,6 +156,11 @@ nav {
     height: auto;
     width: auto;
 }
+canvas {
+    border: 1px solid black;    
+    max-width: 500px;
+    max-height: 500px;
+}
 
 /* -----ABOUT----- */
 article.about {

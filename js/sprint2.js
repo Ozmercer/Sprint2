@@ -43,7 +43,7 @@ function renderMeme(meme, selector, clear) {
     var elMemes = document.querySelector(selector);
     var newHtml = `
         <div class="meme" id="meme${meme.id}" onclick="openEditor(${meme.id})" href="#editor">
-            <a href="#editor"><img src="${meme.url}" title="${meme.desc}"></a>
+            <a href="#editor"><img src="${meme.url}" title="${meme.desc}" onclick="fillCanvas(this)"></a>
         </div>
     `;
     if (clear) elMemes.innerHTML = newHtml
@@ -108,4 +108,22 @@ function renderMemesByPopular() {
         onclick="searchMeme(this,'${keyword}')">${keyword}</span>
         `
     }
+}
+
+function fillCanvas(elMeme) {
+    // var canvas = document.getElementById("canvas-editor");
+    // var ctx = canvas.getContext("2d");
+    // var img = elMeme;
+    // ctx.drawImage(img, 0, 0);
+
+    var myCanvas = document.getElementById('canvas-editor');
+    var ctx = myCanvas.getContext('2d');
+    var img = new Image();
+    console.log(elMeme.src);
+    img.src = elMeme.src;
+    myCanvas.width = img.width;
+    myCanvas.height = img.height;
+    img.onload = function () {
+        ctx.drawImage(img, 0, 0, myCanvas.width, myCanvas.height); // Or at whatever offset you like
+    };
 }
