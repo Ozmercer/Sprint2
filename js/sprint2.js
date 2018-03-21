@@ -32,11 +32,11 @@ function renderGallery() {
 }
 
 function renderImg(img) {
-    var elGallery = document.querySelector('.galley-container');
+    var elMemes = document.querySelector('.memes');
     var newHtml = `
-        <div id="img${img.id}">
+        <div class="meme" id="meme${img.id}">
             <img src="${img.url}">
         </div>
     `
-    elGallery.innerHTML += newHtml;
+    elMemes.innerHTML += newHtml;
 }

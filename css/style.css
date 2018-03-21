@@ -95,7 +95,17 @@ nav {
     border-top: 100px solid red;
 }
 
-
+/* -----GALLERY----- */
+.meme {
+    height: 150px;
+    max-width: 150px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+.gallery img {
+    height: 150px;
+    width: auto;
+}
 
 /* -----ABOUT----- */
 article.about {
