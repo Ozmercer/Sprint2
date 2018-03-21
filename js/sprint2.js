@@ -16,20 +16,22 @@ function getMeme(url, keyWords, desc) {
     }
     gMemes.push(meme)
 }
-getMeme('../img/memes/1.png', ['high', 'happy', 'man', 'drink', 'funny'], '10 Guy')
-getMeme('../img/memes/2.png', ['dog', 'look', 'funny', 'pet', 'happy'], 'Doge')
-getMeme('../img/memes/3.png', ['cartoon', 'angry', 'man', 'why'], 'Y U No')
-getMeme('../img/memes/4.png', ['cartoon', 'man', 'futurama', 'think'], 'Futurama Fry')
-getMeme('../img/memes/5.png', ['man', 'satisfied', 'cheers', 'drink', 'tuxedo'], 'Leonardo Dicaprio Cheers')
-getMeme('../img/memes/6.png', ['cartoon', 'comics', 'angry', 'funny', 'work', 'look'], 'Boardroom Meeting Suggestion')
-getMeme('../img/memes/7.png', ['cartoon', 'comics', 'angry', 'funny', 'slap'], 'Batman Slapping Robin')
-getMeme('../img/memes/8.png', ['black', 'get', 'prize', 'shout', 'woman'], 'Oprah You Get A')
-getMeme('../img/memes/9.png', ['cartoon', 'toys', 'look'], 'X, X Everywhere')
-getMeme('../img/memes/10.png', ['think', 'man', 'satisfied', 'clever', 'work', 'look', 'black'], 'Roll Safe Think About It')
+
 
 keywordRepMap = getKeywordMap()
 
 function init() {
+
+    getMeme('../img/memes/1.png', ['high', 'happy', 'man', 'drink', 'funny'], '10 Guy')
+    getMeme('../img/memes/2.png', ['dog', 'look', 'funny', 'pet', 'happy'], 'Doge')
+    getMeme('../img/memes/3.png', ['cartoon', 'angry', 'man', 'why'], 'Y U No')
+    getMeme('../img/memes/4.png', ['cartoon', 'man', 'futurama', 'think'], 'Futurama Fry')
+    getMeme('../img/memes/5.png', ['man', 'satisfied', 'cheers', 'drink', 'tuxedo'], 'Leonardo Dicaprio Cheers')
+    getMeme('../img/memes/6.png', ['cartoon', 'comics', 'angry', 'funny', 'work', 'look'], 'Boardroom Meeting Suggestion')
+    getMeme('../img/memes/7.png', ['cartoon', 'comics', 'angry', 'funny', 'slap'], 'Batman Slapping Robin')
+    getMeme('../img/memes/8.png', ['black', 'get', 'prize', 'shout', 'woman'], 'Oprah You Get A')
+    getMeme('../img/memes/9.png', ['cartoon', 'toys', 'look'], 'X, X Everywhere')
+    getMeme('../img/memes/10.png', ['think', 'man', 'satisfied', 'clever', 'work', 'look', 'black'], 'Roll Safe Think About It')
     renderGallery();
     renderMemesByPopular();
 
@@ -39,14 +41,14 @@ function init() {
             {
                 line: 'Enter Text',
                 size: 80,
-                align: 'left',
+                align: 'center',
                 color: 'white'
             }
             ,
             {
                 line: 'Enter Text',
                 size: 80,
-                align: 'left',
+                align: 'center',
                 color: 'white'
             }]
     }
@@ -137,11 +139,12 @@ function fillCanvas(elMeme) {
     myCanvas.height = img.height;
     img.onload = function () {
         ctx.drawImage(img, 0, 0, myCanvas.width, myCanvas.height); // Or at whatever offset you like
-        ctx.textAlign = 'center';
+        ctx.textAlign = gMemesEditor.txts[0].align;
         ctx.font = `${gMemesEditor.txts[0].size}px Arial`;
         ctx.fillStyle = gMemesEditor.txts[0].color;
         ctx.fillText(gMemesEditor.txts[0].line, myCanvas.width / 2, myCanvas.height * 0.2);
 
+        ctx.textAlign = gMemesEditor.txts[1].align;
         ctx.font = `${gMemesEditor.txts[1].size}px Arial`;
         ctx.fillStyle = gMemesEditor.txts[1].color;
         ctx.fillText(gMemesEditor.txts[1].line, myCanvas.width / 2, myCanvas.height * 0.9);
@@ -151,6 +154,22 @@ function fillCanvas(elMeme) {
     console.log(gMemesEditor);
     console.log(gMemesEditor.txts[0].line);
 
+}
+
+function editor1() {
+    // // TODO
+    // Align left, right, center
+    // Text color
+    // Select font
+    // Add / Delete txts
+}
+
+function editor2() {
+    // //TODO
+    // Increase / decrease font size
+    // Text shadow (on/off)
+    // Move lines up/down by buttons
+    // Save button
 }
 
 
