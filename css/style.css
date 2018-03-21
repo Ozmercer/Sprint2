@@ -209,15 +209,31 @@ article.about {
     background-color: #323232;
     padding: 20px;
 }
+.contact-container {
+    margin: 20px;
+}
+
+.contact p {
+    width: 180px;
+}
 
 form {
     width: 50vw;
 }
 
 input {
-    width: 75%;
+    width: 100%;
+    background-color: #454545;
+    border: none;
+    margin: 1em 0;
+    height: 2em;
 }
 
+.contact h2 {
+    color: #e0e0e0;
+}
+.contact h4 {
+    color: #bebebe;}
 /* ------FOOTER------ */
 
 footer {
