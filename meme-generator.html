@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/helpers.css">
 </head>
 
-<body onload="renderGallery()">
+<body onload="init()">
     <header>
         <div class="container flex space-between align-center">
             <nav>
@@ -40,20 +40,29 @@
     <main class="gallery">
         <section class="container galley-container" >
             <input class="search-box" type="text" placeholder="Search Meme..." onkeyup="searchMeme(this)">
+
             <h2>Select a meme you would like to edit</h2>
             <div class="memes flex flex-wrap space-between">
                 <!-- Gallery After Render -->
             </div>
+            <div class="keywords flex flex-wrap align-center space-bewtween">
+                <!-- Key words by size -->
+            </div>
+            <!-- TODO: accept new img by url -->
         </section>
         <section class="editor hide" id="editor">
             <div class="container editor-container">
                 <h2>Meme Editor</h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim corrupti consequatur harum excepturi doloremque similique ipsa sed explicabo nihil quam. Harum veritatis, suscipit exercitationem ipsum incidunt nesciunt a officiis dolores.</p>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim corrupti consequatur harum excepturi doloremque
+                    similique ipsa sed explicabo nihil quam. Harum veritatis, suscipit exercitationem ipsum incidunt nesciunt
+                    a officiis dolores.</p>
                 <div class="canvas"></div>
+                <canvas id="canvas-editor">
+                    <!-- Canvas goes here -->
+                </canvas>
             </div>
         </section>
     </main>
-    
 
     <article class="about">
         <div class="container about-container flex column">
@@ -161,8 +170,8 @@
                     <button>SEND</button>
                 </form>
                 <div class="contact-txt">
-                    <p>Quisque Hendrerit: purus dapibus, ornare nibh vitae, viverra nibh. Fusce vitae aliquam tellus. Proin sit amet
-                        volutpat libero. Nulla sed nunc et tortor luctus faucibus morbi vitae. </p>
+                    <p>Quisque Hendrerit: purus dapibus, ornare nibh vitae, viverra nibh. Fusce vitae aliquam tellus. Proin
+                        sit amet volutpat libero. Nulla sed nunc et tortor luctus faucibus morbi vitae. </p>
                     <p>***CONNECTION DETAILS***</p>
                 </div>
             </div>
