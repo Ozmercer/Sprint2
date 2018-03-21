@@ -63,11 +63,14 @@ function openEditor(memeId) {
     renderMeme(gCurrMeme, '.canvas', true)
 }
 
-function searchMeme(elInput) {
-    var filter = elInput.value.toUpperCase();
+function searchMeme(elInput, text) {
+    var filter;
+    if (text) filter = text.toUpperCase();
+    else filter = elInput.value.toUpperCase();
+
     console.log(filter);
     for (var i = 0; i < gMemes.length; i++) {
-        var imgId = 'meme'+ gMemes[i].id;
+        var imgId = 'meme' + gMemes[i].id;
         var elImg = document.getElementById(imgId);
         console.log(elImg);
         var words = gMemes[i].keyWords;
