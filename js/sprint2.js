@@ -4,6 +4,7 @@ console.log('File Loaded');
 var gMemes = [];
 var gCurrId = 1;
 var gCurrMeme;
+var keywordRepMap; 
 
 function getMeme (url, keyWords, desc){
     var meme = {
@@ -15,16 +16,23 @@ function getMeme (url, keyWords, desc){
     gMemes.push(meme)
 }
 
-getMeme('../img/memes/1.png', ['high','stupid', 'happy', 'man', 'drunk', 'funny'],'10 Guy')
-getMeme('../img/memes/2.png', ['dog','look','funny'],'Doge')
+getMeme('../img/memes/1.png', ['high', 'happy', 'man', 'drink', 'funny'],'10 Guy')
+getMeme('../img/memes/2.png', ['dog','look','funny','pet','happy'],'Doge')
 getMeme('../img/memes/3.png', ['cartoon','angry','man','why'],'Y U No')
-getMeme('../img/memes/4.png', ['cartoon','man', 'futurama','think','thinking'],'Futurama Fry')
-getMeme('../img/memes/5.png', ['man','satisfied','cheers','drink','tuxedo','rich'],'Leonardo Dicaprio Cheers')
-getMeme('../img/memes/6.png', ['cartoon','comics','angry','funny','work'],'Boardroom Meeting Suggestion')
-getMeme('../img/memes/7.png', ['cartoon','comics','angry','funny','work'],'Batman Slapping Robin')
-getMeme('../img/memes/8.png', ['cartoon','comics','angry','funny','work'],'Oprah You Get A')
-getMeme('../img/memes/9.png', ['cartoon','comics','angry','funny','work'],'X, X Everywhere')
-getMeme('../img/memes/10.png', ['cartoon','comics','angry','funny','work'],'Roll Safe Think About It')
+getMeme('../img/memes/4.png', ['cartoon','man', 'futurama','think'],'Futurama Fry')
+getMeme('../img/memes/5.png', ['man','satisfied','cheers','drink','tuxedo'],'Leonardo Dicaprio Cheers')
+getMeme('../img/memes/6.png', ['cartoon','comics','angry','funny','work','look'],'Boardroom Meeting Suggestion')
+getMeme('../img/memes/7.png', ['cartoon','comics','angry','funny','slap'],'Batman Slapping Robin')
+getMeme('../img/memes/8.png', ['black','get','prize','shout','woman'],'Oprah You Get A')
+getMeme('../img/memes/9.png', ['cartoon','toys','look'],'X, X Everywhere')
+getMeme('../img/memes/10.png', ['think','man','clever','work','look','black'],'Roll Safe Think About It')
+
+keywordRepMap = getKeywordMap()
+
+function init() {
+    renderGallery();
+    renderMemesByPopular();
+}
 
 function renderGallery() {
     gMemes.forEach(function(meme) {
@@ -36,7 +44,7 @@ function renderMeme(meme, selector,clear) {
     var elMemes = document.querySelector(selector);
     var newHtml = `
         <div class="meme" id="${meme.id}" onclick="openEditor(${meme.id})" href="#editor">
-            <a href="#editor"><img src="${meme.url}" alt="${meme.desc}"></a>
+            <a href="#editor"><img src="${meme.url}" title="${meme.desc}"></a>
         </div>
     `;
     if (clear) elMemes.innerHTML = newHtml
@@ -52,5 +60,37 @@ function openEditor(memeId) {
     gCurrMeme = gMemes.find(function(meme) {
         return meme.id === memeId
     })
-    renderMeme(gCurrMeme,'.canvas',true)
+    renderMeme(gCurrMeme,'.canvas',true);
+}
+
+/*
+* define font size according to recurrances
+*/
+function getKeywordMap() {
+    var keywordRepsMap = {};
+    gMemes.forEach(function (meme) {
+        meme.keyWords.forEach(function(keyword) {
+            if (!keywordRepsMap[keyword]) keywordRepsMap[keyword] = 1;
+            else keywordRepsMap[keyword]++
+        })
+    })
+    return keywordRepsMap;
+}
+
+
+function renderMemesByPopular() {
+    var elKeywords = document.querySelector('.keywords');
+
+    for (var keyword in keywordRepMap) {
+        elKeywords.innerHTML += `
+        <span style="font-size:${12 + 10 * (keywordRepMap[keyword])}px"> ${keyword} </span>
+        `
+    }
+    console.log(elKeywords);
+    
+    // keywordRepMap.forEach(function(keyword) {
+    //     elKeywords.innerHTML += `
+    //     <span size="${8 + 3 * (keywordRepMap[keyword])}">
+    //     `
+    // })
 }

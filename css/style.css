@@ -127,6 +127,12 @@ nav {
     text-align: center;
 }
 
+.keywords {
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
 /* ----CANVAS---- */
 .canvas .meme {
     border: 5px solid mediumseagreen;
