@@ -39,15 +39,14 @@ function renderGallery() {
     })
 }
 
-function renderMeme(meme, selector, clear) {
+function renderMeme(meme, selector) {
     var elMemes = document.querySelector(selector);
     var newHtml = `
         <div class="meme" id="meme${meme.id}" onclick="openEditor(${meme.id})" href="#editor">
             <a href="#editor"><img src="${meme.url}" title="${meme.desc}" onclick="fillCanvas(this)"></a>
         </div>
     `;
-    if (clear) elMemes.innerHTML = newHtml
-    else elMemes.innerHTML += newHtml;
+    elMemes.innerHTML += newHtml;
 }
 
 function openEditor(memeId) {
@@ -59,8 +58,6 @@ function openEditor(memeId) {
     gCurrMeme = gMemes.find(function (meme) {
         return meme.id === memeId
     })
-
-    renderMeme(gCurrMeme, '.canvas', true)
 }
 
 function searchMeme(elInput, text) {

@@ -32,7 +32,7 @@
 
 html {
     font-family: 'latoRegular', sans-serif;
-    font-size: 12px;
+    font-size: 1rem;
 }
 
 body {
@@ -119,9 +119,7 @@ nav {
 }
 
 .editor {
-    /* height: auto;
-    display: block;
-    visibility: visible; */
+    border: 5px solid #2eb398;
 }
 
 .galley-container .meme {
@@ -158,8 +156,8 @@ nav {
 }
 canvas {
     border: 1px solid black;    
-    max-width: 500px;
-    max-height: 500px;
+    max-width: 450px;
+    max-height: 450px;
 }
 
 /* -----ABOUT----- */
