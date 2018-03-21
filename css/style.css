@@ -117,9 +117,14 @@ article.about {
 
 .about h2 {
     margin: 0;
+    color: #d7fcf5; 
 }
 .about h3 {
     margin-top: 5px;
+    color: #20816d;
+}
+.about p {
+    color: #d7fcf5;
 }
 
 .profile {
@@ -159,4 +164,27 @@ article.about {
 }
 .dribbble {
     color: #ef558f
+}
+
+/* -------CONTACT------- */
+
+.contact {
+    background-color: #323232;
+    padding: 20px;
+}
+
+form {
+    width: 50vw;
+}
+
+input {
+    width: 75%;
+}
+
+/* ------FOOTER------ */
+
+footer {
+    background-color: #222222;
+    color: #454545;
+    padding: 15px 40px;
 }
