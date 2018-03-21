@@ -132,6 +132,9 @@ nav {
     align-items: center;
     justify-content: space-between;
 }
+.keywords span {
+    margin: 0 5px;
+}
 
 /* ----CANVAS---- */
 .canvas .meme {

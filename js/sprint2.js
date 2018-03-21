@@ -25,7 +25,7 @@ getMeme('../img/memes/6.png', ['cartoon','comics','angry','funny','work','look']
 getMeme('../img/memes/7.png', ['cartoon','comics','angry','funny','slap'],'Batman Slapping Robin')
 getMeme('../img/memes/8.png', ['black','get','prize','shout','woman'],'Oprah You Get A')
 getMeme('../img/memes/9.png', ['cartoon','toys','look'],'X, X Everywhere')
-getMeme('../img/memes/10.png', ['think','man','clever','work','look','black'],'Roll Safe Think About It')
+getMeme('../img/memes/10.png', ['think','man','satisfied','clever','work','look','black'],'Roll Safe Think About It')
 
 keywordRepMap = getKeywordMap()
 
@@ -43,7 +43,7 @@ function renderGallery() {
 function renderMeme(meme, selector,clear) {
     var elMemes = document.querySelector(selector);
     var newHtml = `
-        <div class="meme" id="${meme.id}" onclick="openEditor(${meme.id})" href="#editor">
+        <div class="meme" id="meme${meme.id}" onclick="openEditor(${meme.id})" href="#editor">
             <a href="#editor"><img src="${meme.url}" title="${meme.desc}"></a>
         </div>
     `;
@@ -77,20 +77,13 @@ function getKeywordMap() {
     return keywordRepsMap;
 }
 
-
 function renderMemesByPopular() {
     var elKeywords = document.querySelector('.keywords');
 
     for (var keyword in keywordRepMap) {
         elKeywords.innerHTML += `
-        <span style="font-size:${12 + 10 * (keywordRepMap[keyword])}px"> ${keyword} </span>
+        <span style="font-size:${12 + 10 * (keywordRepMap[keyword])}px" 
+        onclick="searchMeme(this,'${keyword}')">${keyword}</span>
         `
     }
-    console.log(elKeywords);
-    
-    // keywordRepMap.forEach(function(keyword) {
-    //     elKeywords.innerHTML += `
-    //     <span size="${8 + 3 * (keywordRepMap[keyword])}">
-    //     `
-    // })
 }
