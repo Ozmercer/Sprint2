@@ -5,6 +5,7 @@ var gMemes = [];
 var gCurrId = 1;
 var gCurrMeme;
 var keywordRepMap;
+var gMemesEditor;
 
 function getMeme(url, keyWords, desc) {
     var meme = {
@@ -31,6 +32,24 @@ keywordRepMap = getKeywordMap()
 function init() {
     renderGallery();
     renderMemesByPopular();
+
+    gMemesEditor = {
+        selectedImgId: null,
+        txts: [
+            {
+                line: 'Enter Text',
+                size: 80,
+                align: 'left',
+                color: 'white'
+            }
+            ,
+            {
+                line: 'Enter Text',
+                size: 80,
+                align: 'left',
+                color: 'white'
+            }]
+    }
 }
 
 function renderGallery() {
@@ -108,10 +127,6 @@ function renderMemesByPopular() {
 }
 
 function fillCanvas(elMeme) {
-    // var canvas = document.getElementById("canvas-editor");
-    // var ctx = canvas.getContext("2d");
-    // var img = elMeme;
-    // ctx.drawImage(img, 0, 0);
 
     var myCanvas = document.getElementById('canvas-editor');
     var ctx = myCanvas.getContext('2d');
@@ -122,5 +137,20 @@ function fillCanvas(elMeme) {
     myCanvas.height = img.height;
     img.onload = function () {
         ctx.drawImage(img, 0, 0, myCanvas.width, myCanvas.height); // Or at whatever offset you like
+        ctx.textAlign = 'center';
+        ctx.font = `${gMemesEditor.txts[0].size}px Arial`;
+        ctx.fillStyle = gMemesEditor.txts[0].color;
+        ctx.fillText(gMemesEditor.txts[0].line, myCanvas.width / 2, myCanvas.height * 0.2);
+
+        ctx.font = `${gMemesEditor.txts[1].size}px Arial`;
+        ctx.fillStyle = gMemesEditor.txts[1].color;
+        ctx.fillText(gMemesEditor.txts[1].line, myCanvas.width / 2, myCanvas.height * 0.9);
     };
+
+
+    console.log(gMemesEditor);
+    console.log(gMemesEditor.txts[0].line);
+
 }
+
+
