@@ -104,6 +104,7 @@ nav {
 }
 
 /*--------Gallery--------*/
+
 main {
     background-color: #f6fffd;
 }
@@ -181,7 +182,12 @@ canvas {
     color: #92c1b7;
 }
 
+.close-editor {
+    position: absolute;
+}
+
 /*--------About--------*/
+
 article.about {
     background-color: #2eb398;
     padding: 0 20px;
@@ -250,7 +256,7 @@ article.about {
     color: #ef558f
 }
 
-/* -------CONTACT------- */
+/*--------Contact--------*/
 
 .contact {
     background-color: #323232;

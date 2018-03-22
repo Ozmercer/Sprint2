@@ -6,6 +6,7 @@ var gCurrId = 1;
 var gCurrMeme;
 var keywordRepMap;
 var gMemesEditor;
+var gTextId = -1;
 
 function getMeme(url, keyWords, desc) {
     var meme = {
@@ -89,6 +90,12 @@ function openEditor(memeId) {
     gMemesEditor.selectedImgId = gCurrMeme.id;
 }
 
+function closeEditor() {
+    var elEditor = document.querySelector('.editor');
+    elEditor.classList.toggle('hide');
+    gCurrMeme = null;
+}
+
 function searchMeme(elInput, text) {
     var filter;
     if (text) filter = text.toUpperCase();
@@ -146,26 +153,49 @@ function fillCanvas(elMeme) {
     myCanvas.width = img.width;
     myCanvas.height = img.height;
     ctx.drawImage(img, 0, 0, myCanvas.width, myCanvas.height);
-    for (var i = 0; i < gMemesEditor.txts.length; i++) {
-        fillTxt(ctx, img, i)
+    if (gTextId === -1) {
+        for (var i = 0; i < gMemesEditor.txts.length; i++) {
+            fillTxt(ctx, img, i);
+        }
+    }
+    else {
+        fillTxt(ctx, img, gTextId);
+        for (var i = 0; i < gMemesEditor.txts.length; i++) {
+            if (i === gTextId) continue;
+            fillTxt(ctx, img, i);
+        }
     }
 }
 
 function alignTxt(direction) {
-    gMemesEditor.txts.forEach(function (txt) { txt.align = direction })
+    if (gTextId > -1) gMemesEditor.txts[gTextId].align = direction;
+    else {
+        gMemesEditor.txts.forEach(function (txt) { txt.align = direction })
+    }
     fillCanvas(this)
 }
+
 function changeColor(elColor) {
-    gMemesEditor.txts.forEach(function (txt) { txt.color = elColor.value })
+    if (gTextId > -1) gMemesEditor.txts[gTextId].color = elColor.value;
+    else {
+        gMemesEditor.txts.forEach(function (txt) { txt.color = elColor.value })
+    }
     fillCanvas(this)
 }
+
 function changeFont(elFont) {
     if (!elFont.value) return;
-    gMemesEditor.txts.forEach(function (txt) { txt.font = elFont.value })
+    if (gTextId > -1) gMemesEditor.txts[gTextId].font = elFont.value;
+    else {
+        gMemesEditor.txts.forEach(function (txt) { txt.font = elFont.value })
+    }
     fillCanvas(this)
 }
 function changeTxt(elTxt) {
-    gMemesEditor.txts.forEach(function (txt) { txt.line = elTxt.value})
+    if (gTextId > -1) gMemesEditor.txts[gTextId].line = elTxt.value;
+    else {
+        gMemesEditor.txts.forEach(function (txt) { txt.line = elTxt.value })
+    }
     fillCanvas(this)
 }
 
@@ -189,46 +219,67 @@ function fillTxt(ctx, img, idx) {
     ctx.stroke();
 }
 
-function increaseFontSize(elIncreaseBtn) {
-    var classAttribute = elIncreaseBtn.getAttribute('class');
-    var index = parseInt(classAttribute[classAttribute.length - 1]);
+// function increaseFontSize(elIncreaseBtn) {
+//     var classAttribute = elIncreaseBtn.getAttribute('class');
+//     var index = parseInt(classAttribute[classAttribute.length - 1]);
 
-    gMemesEditor.txts[index].size += 4;
+//     gMemesEditor.txts[index].size += 4;
+//     fillCanvas(this);
+// }
+
+function increaseFontSize() {
+    if (gTextId > -1) gMemesEditor.txts[gTextId].size += 4;
+    else {
+        for (var i = 0; i < gMemesEditor.txts.length; i++) {
+            gMemesEditor.txts[i].size += 4;
+        }
+    }
     fillCanvas(this);
 }
 
-function decreaseFontSize(elDecreaseBtn) {
-    var classAttribute = elDecreaseBtn.getAttribute('class');
-    var index = parseInt(classAttribute[classAttribute.length - 1]);
-
-    gMemesEditor.txts[index].size -= 4;
+function decreaseFontSize() {
+    if (gTextId > -1) gMemesEditor.txts[gTextId].size -= 4;
+    else {
+        for (var i = 0; i < gMemesEditor.txts.length; i++) {
+            gMemesEditor.txts[i].size -= 4;
+        }
+    }
     fillCanvas(this);
 }
 
 function addOrRemoveShadow(elShadowCeckBox) {
-    var classAttribute = elShadowCeckBox.getAttribute('class');
-    var index = parseInt(classAttribute[classAttribute.length - 1]);
     var isChecked = elShadowCeckBox.checked;
 
-    if (isChecked) gMemesEditor.txts[index].shadow = 'red';
-    else gMemesEditor.txts[index].shadow = 'rgba(0,0,0,0)';
-
+    if (gTextId > -1) {
+        if (isChecked) gMemesEditor.txts[gTextId].shadow = 'black';
+        else gMemesEditor.txts[gTextId].shadow = 'rgba(0,0,0,0)';
+    }
+    else {
+        for (var i = 0; i < gMemesEditor.txts.length; i++) {
+            if (isChecked) gMemesEditor.txts[i].shadow = 'black';
+            else gMemesEditor.txts[i].shadow = 'rgba(0,0,0,0)';
+        }
+    }
     fillCanvas(this);
 }
 
-function moveTextUp(elMoveUpBtn) {
-    var classAttribute = elMoveUpBtn.getAttribute('class');
-    var index = parseInt(classAttribute[classAttribute.length - 1]);
-
-    gMemesEditor.txts[index].y_position -= 0.1;
+function moveTextUp() {
+    if (gTextId > -1) gMemesEditor.txts[gTextId].y_position -= 0.05;
+    else {
+        for (var i = 0; i < gMemesEditor.txts.length; i++) {
+            gMemesEditor.txts[i].y_position -= 0.05;
+        }
+    }
     fillCanvas(this);
 }
 
-function moveTextDown(elMoveDownBtn) {
-    var classAttribute = elMoveDownBtn.getAttribute('class');
-    var index = parseInt(classAttribute[classAttribute.length - 1]);
-
-    gMemesEditor.txts[index].y_position += 0.1;
+function moveTextDown() {
+    if (gTextId > -1) gMemesEditor.txts[gTextId].y_position += 0.05;
+    else {
+        for (var i = 0; i < gMemesEditor.txts.length; i++) {
+            gMemesEditor.txts[i].y_position += 0.05;
+        }
+    }
     fillCanvas(this);
 }
 
@@ -237,4 +288,15 @@ function saveCanvasAsPNG(elSaveLnk) {
     var dataURL = canvas.toDataURL('image/png');
     elSaveLnk.href = dataURL;
 }
+
+function setElIdx(elTxt) {
+    var classAttribute = elTxt.getAttribute('class');
+    gTextId = parseInt(classAttribute[classAttribute.length - 1]);
+}
+
+function selectAll() {
+    gTextId = -1;
+}
+
+
 

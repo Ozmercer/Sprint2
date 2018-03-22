@@ -48,6 +48,7 @@
             <input class="search-box" type="text" placeholder="Search Meme..." onkeyup="searchMeme(this)">
             <div class="keywords flex flex-wrap align-center space-bewtween">
                 <!-- Key words by size -->
+                <button onclick="searchMeme(this,'')">All MEMEs</button>
             </div>
             <!-- TODO: accept new img by url -->
         </section>
@@ -55,14 +56,14 @@
         <section class="editor hide" id="editor">
             <div class="container editor-container">
                 <h2>Meme Editor</h2>
-
+                <button class="close-editor" onclick="closeEditor()">X</button>
                 <div class="canvas-container container flex">
                     <canvas id="canvas-editor">
                         <!-- Canvas goes here -->
                     </canvas>
                     <div class="editor-controlers">
                         <!-- <form onsubmit="return false"> -->
-                            <input type="text" placeholder="Enter Text..." class="line-0" onkeyup="changeTxt(this)">
+                            <input type="text" placeholder="Enter Text..." class="line-0" onkeyup="changeTxt(this)" onfocus="setElIdx(this)">
                             <input type="color" onchange="changeColor(this)">
                             <button class="align-left" onclick="alignTxt('left')"><i class="fas fa-align-left"></i></button>
                             <button class="align-center" onclick="alignTxt('center')" ><i class="fas fa-align-center"></i></button>
@@ -77,18 +78,17 @@
                                 <option value="Impact"></option>
                             </datalist>
                             <!-- TODO: Add Dropdown for font size -->
-                            <button class="increase-size-0" onclick="increaseFontSize(this)">Increase Font Size</button>
-                            <button class="decrease-size-0" onclick="decreaseFontSize(this)">Decrease Font Size</button>
+                            <button class="increase-size" onclick="increaseFontSize()">Increase Font Size</button>
+                            <button class="decrease-size" onclick="decreaseFontSize()">Decrease Font Size</button>
                             <br>
                             <br>
                             <span>Text Shadow</span>
-                            <input type="checkbox" class="shadow-0" onclick="addOrRemoveShadow(this)">
+                            <input type="checkbox" class="shadowBox" onclick="addOrRemoveShadow(this)">
                             <br>
                             <!-- TODO: Add Dropdown for font type -->
-                            <button class="text-up-0" onclick="moveTextUp(this)">Text Up</button>
-                            <button class="text-down-0" onclick="moveTextDown(this)">Text Down</button>
-                            <input type="text" placeholder="Enter Text...">
-                        <!-- </form> -->
+                            <button class="text-up" onclick="moveTextUp()">Text Up</button>
+                            <button class="text-down" onclick="moveTextDown()">Text Down</button>
+                            <input type="text" placeholder="Enter Text..." class="line-1" onkeyup="changeTxt(this)" onfocus="setElIdx(this)">
                             <a class="save-meme" onclick="saveCanvasAsPNG(this)" download="meme.png">Save</a>
                     </div>
                 </div>
