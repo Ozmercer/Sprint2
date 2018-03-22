@@ -4,6 +4,7 @@ console.log('File Loaded');
 var gMemes = [];
 var gCurrId = 1;
 var gCurrMeme;
+var gCurrImgEl;
 var keywordRepMap;
 var gMemesEditor;
 
@@ -39,7 +40,7 @@ function init() {
         selectedImgId: null,
         txts: [
             {
-                line: 'Enter Text',
+                line: 'Text',
                 size: 80,
                 align: 'center',
                 color: 'white'
@@ -64,7 +65,8 @@ function renderMeme(meme, selector) {
     var elMemes = document.querySelector(selector);
     var newHtml = `
         <div class="meme" id="meme${meme.id}" onclick="openEditor(${meme.id})" href="#editor">
-            <a href="#editor"><img src="${meme.url}" title="${meme.desc}" onclick="fillCanvas(this)"></a>
+            <a href="#editor"><img src="${meme.url}" title="${meme.desc}" 
+            onclick="fillCanvas(this)"></a>
         </div>
     `;
     elMemes.innerHTML += newHtml;
@@ -79,6 +81,7 @@ function openEditor(memeId) {
     gCurrMeme = gMemes.find(function (meme) {
         return meme.id === memeId
     })
+    gMemesEditor.selectedImgId = gCurrMeme.id;
 }
 
 function searchMeme(elInput, text) {
@@ -129,39 +132,52 @@ function renderMemesByPopular() {
 }
 
 function fillCanvas(elMeme) {
-
+    gCurrImgEl = elMeme
     var myCanvas = document.getElementById('canvas-editor');
     var ctx = myCanvas.getContext('2d');
     var img = new Image();
-    console.log(elMeme.src);
     img.src = elMeme.src;
     myCanvas.width = img.width;
     myCanvas.height = img.height;
     img.onload = function () {
-        ctx.drawImage(img, 0, 0, myCanvas.width, myCanvas.height); // Or at whatever offset you like
-        ctx.textAlign = gMemesEditor.txts[0].align;
-        ctx.font = `${gMemesEditor.txts[0].size}px Arial`;
-        ctx.fillStyle = gMemesEditor.txts[0].color;
-        ctx.fillText(gMemesEditor.txts[0].line, myCanvas.width / 2, myCanvas.height * 0.2);
-
-        ctx.textAlign = gMemesEditor.txts[1].align;
-        ctx.font = `${gMemesEditor.txts[1].size}px Arial`;
-        ctx.fillStyle = gMemesEditor.txts[1].color;
-        ctx.fillText(gMemesEditor.txts[1].line, myCanvas.width / 2, myCanvas.height * 0.9);
+        ctx.drawImage(img, 0, 0, myCanvas.width, myCanvas.height);
+        for (var i = 0; i < gMemesEditor.txts.length; i++) {
+            fillText(ctx, img, i)
+        }
     };
-
-
-    console.log(gMemesEditor);
-    console.log(gMemesEditor.txts[0].line);
-
 }
 
-function editor1() {
-    // // TODO
-    // Align left, right, center
-    // Text color
-    // Select font
-    // Add / Delete txts
+function alignLeft() {
+    gMemesEditor.txts.forEach(function (txt) {
+        txt.align = 'left';
+    })
+    fillCanvas(gCurrImgEl)
+}
+function alignCenter() {
+    gMemesEditor.txts.forEach(function (txt) {
+        txt.align = 'center';
+    })
+    fillCanvas(gCurrImgEl)
+}
+function alignRight() {
+    gMemesEditor.txts.forEach(function (txt) {
+        txt.align = 'end';
+    })
+    fillCanvas(gCurrImgEl)
+}
+
+function fillText(ctx, img, idx) {
+    var txtStart;
+    if (gMemesEditor.txts[idx].align === 'left') txtStart = img.width * 0.05;
+    else if (gMemesEditor.txts[idx].align === 'center') txtStart = img.width / 2;
+    else txtStart = img.width * 0.95
+
+    var txtHight = (idx) ? 0.9 : 0.2;
+
+    ctx.textAlign = gMemesEditor.txts[idx].align;
+    ctx.font = `${gMemesEditor.txts[idx].size}px Arial`;
+    ctx.fillStyle = gMemesEditor.txts[idx].color;
+    ctx.fillText(gMemesEditor.txts[idx].line, txtStart, img.height * txtHight);
 }
 
 function editor2() {
