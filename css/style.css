@@ -251,6 +251,10 @@ canvas {
     color: #24574b;
     padding: 10px;
     margin: 0.5em 0 0.5em 0;
+    width: 85%;
+}
+.editor .delete {
+    color: #bd5656;
 }
 
 .editor-controlers {

@@ -62,11 +62,19 @@ function addTxt() {
         shadow: 'rgba(0,0,0,0)',
         y_position: y_pos,
     }
-    gMemesEditor.txts.push(txt)
     addTxtInpt();
+    gMemesEditor.txts.push(txt)
     if (gCurrMeme) {
         fillCanvas(this);
     }
+}
+
+function removeTxt(elBtn, idx) {
+    var elTxt = document.querySelector(`.line-${idx}`) 
+    gMemesEditor.txts.splice(idx,1);
+    elTxt.remove();
+    elBtn.remove(); 
+    fillCanvas();
 }
 
 function renderGallery() {
@@ -145,11 +153,17 @@ function renderMemesByPopular() {
         onclick="searchMeme(this,'${keyword}')">${keyword}</span>
         `
     }
-
 }
 
 function addTxtInpt() {
-    var elTxtInput;
+    var txtsLen = gMemesEditor.txts.length;
+    var elTxtInput = document.querySelector('.input-txt');
+    var newHtml = `
+    <input type="text" placeholder="Enter Text ${txtsLen + 1}..." class="line-${txtsLen}" 
+    onkeyup="changeTxt(this)" onfocus="setElIdx(this)">
+    <button class="delete" onclick="removeTxt(this, ${txtsLen})">X</button>
+    `
+    elTxtInput.innerHTML += newHtml;
 }
 
 function fillCanvas(elMeme) {
