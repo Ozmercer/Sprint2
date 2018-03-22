@@ -39,26 +39,33 @@ function init() {
 
     gMemesEditor = {
         selectedImgId: null,
-        txts: [
-            {
-                line: 'Text',
-                size: 80,
-                align: 'center',
-                color: 'white',
-                font: 'Arial',
-                shadow: 'rgba(0,0,0,0)',
-                y_position: 0.2
-            }
-            ,
-            {
-                line: 'Enter Text',
-                size: 80,
-                align: 'center',
-                color: 'white',
-                font: 'Arial',
-                shadow: 'rgba(0,0,0,0)',
-                y_position: 0.9
-            }]
+        txts: []
+    }
+    for (var i = 0; i < 2; i++) {
+        addTxt();
+    }
+}
+
+function addTxt() {
+    var y_pos;
+    var txtsLen = gMemesEditor.txts.length;
+    if (txtsLen === 0) y_pos = 0.2;
+    else if (txtsLen === 1) y_pos = 0.9;
+    else if (txtsLen < 4) y_pos = 0.55;
+    else return;
+    var txt = {
+        line: 'Text',
+        size: 80,
+        align: 'center',
+        color: 'white',
+        font: 'Arial',
+        shadow: 'rgba(0,0,0,0)',
+        y_position: y_pos,
+    }
+    gMemesEditor.txts.push(txt)
+    addTxtInpt();
+    if (gCurrMeme) {
+        fillCanvas(this);
     }
 }
 
@@ -139,6 +146,10 @@ function renderMemesByPopular() {
         `
     }
 
+}
+
+function addTxtInpt() {
+    var elTxtInput;
 }
 
 function fillCanvas(elMeme) {
@@ -251,11 +262,7 @@ function decreaseFontSize() {
 function addOrRemoveShadow(elShadowCeckBox) {
     var isChecked = elShadowCeckBox.checked;
 
-<<<<<<< HEAD
-    if (isChecked) gMemesEditor.txts[index].shadow = 'black';
-    else gMemesEditor.txts[index].shadow = 'rgba(0,0,0,0)';
 
-=======
     if (gTextId > -1) {
         if (isChecked) gMemesEditor.txts[gTextId].shadow = 'black';
         else gMemesEditor.txts[gTextId].shadow = 'rgba(0,0,0,0)';
@@ -266,7 +273,6 @@ function addOrRemoveShadow(elShadowCeckBox) {
             else gMemesEditor.txts[i].shadow = 'rgba(0,0,0,0)';
         }
     }
->>>>>>> 41368807b1d89204c8dd29c649aa83b4eca49e7b
     fillCanvas(this);
 }
 
@@ -296,11 +302,9 @@ function saveCanvasAsPNG(elSaveLnk) {
     elSaveLnk.href = dataURL;
 }
 
-<<<<<<< HEAD
 function clearValue(elInput) {
     elInput.value = ''
 }
-=======
 function setElIdx(elTxt) {
     var classAttribute = elTxt.getAttribute('class');
     gTextId = parseInt(classAttribute[classAttribute.length - 1]);
@@ -309,7 +313,3 @@ function setElIdx(elTxt) {
 function selectAll() {
     gTextId = -1;
 }
-
-
-
->>>>>>> 41368807b1d89204c8dd29c649aa83b4eca49e7b
