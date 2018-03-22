@@ -52,6 +52,11 @@
                 <button class="show-all" onclick="searchMeme(this,'')">All MEMEs</button>
             </div>
             <!-- TODO: accept new img by url -->
+            <br>
+            <div class="keywords flex flex-wrap align-center space-bewtween">
+                <input class="insert-url" type="text" placeholder="Insert image URL..." onfocus="clearValue(this)">
+                <button class="add-url" onclick="addURL()">Add URL</button>
+            </div>
         </section>
 
         <section class="editor hide" id="editor">
@@ -65,31 +70,45 @@
                     <div class="editor-controlers">
                         <!-- <form onsubmit="return false"> -->
 
-                            <button class="select-all" onclick="selectAll()">Select All</button>
-                            <div class="input-txt">
-                                <!-- <input type="text" placeholder="Enter Text 1..." class="line-0" onkeyup="changeTxt(this)" onfocus="setElIdx(this)">
+                        <button class="select-all" onclick="selectAll()">Select All</button>
+                        <div class="input-txt">
+                            <!-- <input type="text" placeholder="Enter Text 1..." class="line-0" onkeyup="changeTxt(this)" onfocus="setElIdx(this)">
                                 <input type="text" placeholder="Enter Text 2..." class="line-1" onkeyup="changeTxt(this)" onfocus="setElIdx(this)"> -->
-                            </div>
-                            <button onclick="addTxt()">Add Text</button>
-                            <input type="color" onchange="changeColor(this)">
-                            <button class="align-left" onclick="alignTxt('left')"><i class="fas fa-align-left"></i></button>
-                            <button class="align-center" onclick="alignTxt('center')" ><i class="fas fa-align-center"></i></button>
-                            <button class="align-right" onclick="alignTxt('end')"><i class="fas fa-align-right"></i></button>
-                            <button class="increase-size font-up" onclick="increaseFontSize()"><i class="fas fa-font"></i></button>
-                            <button class="decrease-size font-down" onclick="decreaseFontSize()"><i class="fas fa-font"></i></button>
-                            <button class="text-up" onclick="moveTextUp()"><i class="fas fa-long-arrow-alt-up"></i></button>
-                            <button class="text-down" onclick="moveTextDown()"><i class="fas fa-long-arrow-alt-down"></i></button>
-                            <input list="fonts" name="font" onkeyup="changeFont(this)" onfocus="clearValue(this)" placeholder="Change text...">
-                            <datalist id="fonts">
-                                <option value="Arial"></option>
-                                <option value="Times New Roman"></option>
-                                <option value="Courier"></option>
-                                <option value="Georgia"></option>
-                                <option value="Comic Sans MS"></option>
-                                <option value="Impact"></option>
-                            </datalist>
-                            <br>
-                            <div class="text-checkbox">
+                        </div>
+                        <button onclick="addTxt()">Add Text</button>
+                        <input type="color" onchange="changeColor(this)">
+                        <button class="align-left" onclick="alignTxt('left')">
+                            <i class="fas fa-align-left"></i>
+                        </button>
+                        <button class="align-center" onclick="alignTxt('center')">
+                            <i class="fas fa-align-center"></i>
+                        </button>
+                        <button class="align-right" onclick="alignTxt('end')">
+                            <i class="fas fa-align-right"></i>
+                        </button>
+                        <button class="increase-size font-up" onclick="increaseFontSize()">
+                            <i class="fas fa-font"></i>
+                        </button>
+                        <button class="decrease-size font-down" onclick="decreaseFontSize()">
+                            <i class="fas fa-font"></i>
+                        </button>
+                        <button class="text-up" onclick="moveTextUp()">
+                            <i class="fas fa-long-arrow-alt-up"></i>
+                        </button>
+                        <button class="text-down" onclick="moveTextDown()">
+                            <i class="fas fa-long-arrow-alt-down"></i>
+                        </button>
+                        <input list="fonts" name="font" onkeyup="changeFont(this)" onfocus="clearValue(this)" placeholder="Change text...">
+                        <datalist id="fonts">
+                            <option value="Arial"></option>
+                            <option value="Times New Roman"></option>
+                            <option value="Courier"></option>
+                            <option value="Georgia"></option>
+                            <option value="Comic Sans MS"></option>
+                            <option value="Impact"></option>
+                        </datalist>
+                        <br>
+                        <div class="text-checkbox">
                             <span>Text Shadow</span>
                             <input type="checkbox" class="shadowBox" onclick="addOrRemoveShadow(this)">
                         </div>
@@ -187,7 +206,7 @@
         <div class="container contact-container column">
             <h2>Get in touch</h2>
             <h4>In order to get in touch use the contact form below:</h4>
-            <div class="form-container flex space-between">
+            <div class="form-container flex">
                 <form action="">
                     <div class="name">
                         <label for="name"></label>
@@ -205,12 +224,20 @@
                         <label for="message"></label>
                         <input type="text" id="message" placeholder="Write your message here">
                     </div>
-                    <button>SEND</button>
+                    <button class="send-contact">SEND</button>
                 </form>
                 <div class="contact-txt">
                     <p>Quisque Hendrerit: purus dapibus, ornare nibh vitae, viverra nibh. Fusce vitae aliquam tellus. Proin
                         sit amet volutpat libero. Nulla sed nunc et tortor luctus faucibus morbi vitae. </p>
-                    <p>***CONNECTION DETAILS***</p>
+                    <p>
+                        <i class="fas fa-map-marker"></i> Ha Bonim 4, Ramat Gan, Israel
+                        <br>
+                        <br>
+                        <i class="fas fa-phone"></i> +972 523485678
+                        <br>
+                        <br>
+                        <i class="fas fa-envelope"></i> dot@hotmail.com
+                    </p>
                 </div>
             </div>
         </div>

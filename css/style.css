@@ -171,7 +171,7 @@ main {
     cursor: pointer;
 }
 
-button.show-all {
+button.show-all, button.add-url, button.send-contact {
     background: #20d0b1;
 }
 
@@ -213,7 +213,7 @@ canvas {
     box-shadow: none;
 }
 
-.editor button, .save-meme, .show-all {
+.editor button, .save-meme, .show-all, .add-url, .send-contact {
     border: none;
     background: #c4e2db;
     padding: 5px;
@@ -365,16 +365,19 @@ article.about {
     background-color: #323232;
     padding: 20px;
 }
-.contact-container {
-    margin: 20px;
-}
 
 .contact p {
-    width: 180px;
+    color: rgb(46, 179, 152);
 }
 
 .contact form {
-    width: 50vw;
+    width: 80%;
+}
+
+.contact-txt {
+    width: 20%;
+    margin: 0 0 0 40px;
+    font-size: 0.7rem;
 }
 
 input {
@@ -386,10 +389,17 @@ input {
 }
 
 .contact h2 {
-    color: #e0e0e0;
+    color: #20816d;
 }
+
 .contact h4 {
-    color: #bebebe;}
+    color: #d7fcf5
+}
+
+.send-contact {
+    margin-left: 92%;
+}
+
 /* ------FOOTER------ */
 
 footer {
