@@ -144,11 +144,9 @@ function fillCanvas(elMeme) {
     myCanvas.width = img.width;
     myCanvas.height = img.height;
     ctx.drawImage(img, 0, 0, myCanvas.width, myCanvas.height);
-    img.onload = function () {
-        for (var i = 0; i < gMemesEditor.txts.length; i++) {
-            fillTxt(ctx, img, i)
-        }
-    };
+    for (var i = 0; i < gMemesEditor.txts.length; i++) {
+        fillTxt(ctx, img, i)
+    }
 }
 
 function alignLeft() {
