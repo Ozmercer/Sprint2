@@ -21,7 +21,7 @@ function getMeme(url, keyWords, desc) {
 
 
 function init() {
-
+    
     getMeme('../img/memes/1.png', ['high', 'happy', 'man', 'drink', 'funny'], '10 Guy')
     getMeme('../img/memes/2.png', ['dog', 'look', 'funny', 'pet', 'happy'], 'Doge')
     getMeme('../img/memes/3.png', ['cartoon', 'angry', 'man', 'why'], 'Y U No')
@@ -230,14 +230,6 @@ function fillTxt(ctx, img, idx) {
     ctx.fill();
     ctx.stroke();
 }
-
-// function increaseFontSize(elIncreaseBtn) {
-//     var classAttribute = elIncreaseBtn.getAttribute('class');
-//     var index = parseInt(classAttribute[classAttribute.length - 1]);
-
-//     gMemesEditor.txts[index].size += 4;
-//     fillCanvas(this);
-// }
 
 function increaseFontSize() {
     if (gTextId > -1) gMemesEditor.txts[gTextId].size += 4;

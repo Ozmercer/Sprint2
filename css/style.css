@@ -160,13 +160,19 @@ main {
     color: #323232;
     margin: 0 10%;
 }
+
 .keywords span {
     margin: 0 5px;
 }
+
 .keywords span:hover {
     color: #1bc4a2;
     transition: all 0.2s;
     cursor: pointer;
+}
+
+button.show-all {
+    background: #20d0b1;
 }
 
 /*--------Canvas--------*/
@@ -185,28 +191,55 @@ canvas {
 
 /*----Editor----*/
 
+.editor-pos {
+    position: relative;
+}
+
 .editor input[list] {
     padding: 10px;
 }
 
 .editor input {
     border-radius: 10px;
+    box-shadow: 1px 1px 6px 0px;
 }
 .editor input[type="checkbox"] {
     width: 20px;
     margin: 0;
+    margin-left: 20px;
     padding: 0;
     cursor: pointer;
+    height: auto;
+    box-shadow: none;
 }
 
-.editor button {
+.editor button, .save-meme, .show-all {
     border: none;
     background: #c4e2db;
     padding: 5px;
     margin: 4px 4px;
     border-radius: 10px;
     cursor: pointer;
+    box-shadow: 1px 1px 6px 0px;
 }
+
+.text-checkbox {
+    background: #c4e2db;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px 0px;
+}
+
+.select-all {
+    font-size: 1rem;
+}
+
+.save-meme {
+    display: inline-block;
+    margin: 10px 0px;
+    color: inherit;
+}
+
 .editor input[type='color'] {
     width: 40px;
     height: 25px;
@@ -218,10 +251,6 @@ canvas {
     color: #24574b;
     padding: 10px;
     margin: 0.5em 0 0.5em 0;
-}
-
-.editor input[type='checkbox'] {
-    display: inline;  
 }
 
 .editor-controlers {
@@ -248,6 +277,8 @@ i {
 
 .close-editor {
     position: absolute;
+    right: 20px;
+    top: 30px;
 }
 
 .editor .text-down {
