@@ -250,12 +250,6 @@ function decreaseFontSize() {
 
 function addOrRemoveShadow(elShadowCeckBox) {
     var isChecked = elShadowCeckBox.checked;
-
-<<<<<<< HEAD
-    if (isChecked) gMemesEditor.txts[index].shadow = 'black';
-    else gMemesEditor.txts[index].shadow = 'rgba(0,0,0,0)';
-
-=======
     if (gTextId > -1) {
         if (isChecked) gMemesEditor.txts[gTextId].shadow = 'black';
         else gMemesEditor.txts[gTextId].shadow = 'rgba(0,0,0,0)';
@@ -266,7 +260,6 @@ function addOrRemoveShadow(elShadowCeckBox) {
             else gMemesEditor.txts[i].shadow = 'rgba(0,0,0,0)';
         }
     }
->>>>>>> 41368807b1d89204c8dd29c649aa83b4eca49e7b
     fillCanvas(this);
 }
 
@@ -296,11 +289,11 @@ function saveCanvasAsPNG(elSaveLnk) {
     elSaveLnk.href = dataURL;
 }
 
-<<<<<<< HEAD
+
 function clearValue(elInput) {
     elInput.value = ''
 }
-=======
+
 function setElIdx(elTxt) {
     var classAttribute = elTxt.getAttribute('class');
     gTextId = parseInt(classAttribute[classAttribute.length - 1]);
@@ -309,7 +302,3 @@ function setElIdx(elTxt) {
 function selectAll() {
     gTextId = -1;
 }
-
-
-
->>>>>>> 41368807b1d89204c8dd29c649aa83b4eca49e7b

@@ -183,7 +183,11 @@ canvas {
 }
 
 
-/* ----Editor---- */
+/*----Editor----*/
+
+.editor input[list] {
+    padding: 10px;
+}
 
 .editor input {
     border-radius: 10px;
@@ -192,6 +196,7 @@ canvas {
     width: 20px;
     margin: 0;
     padding: 0;
+    cursor: pointer;
 }
 
 .editor button {
@@ -200,17 +205,21 @@ canvas {
     padding: 5px;
     margin: 4px 4px;
     border-radius: 10px;
+    cursor: pointer;
 }
 .editor input[type='color'] {
     width: 40px;
     height: 25px;
     margin: 0;
-    border-radius: 5px
+    border-radius: 5px;
+    cursor: pointer;
 }
 .editor input[type='text'] {
     color: #24574b;
     padding: 10px;
+    margin: 0.5em 0 0.5em 0;
 }
+
 .editor input[type='checkbox'] {
     display: inline;  
 }
@@ -218,6 +227,7 @@ canvas {
 .editor-controlers {
     margin: 0 20px;
 }
+
 i {
     height: 15px;
     width: 15px;
@@ -238,6 +248,10 @@ i {
 
 .close-editor {
     position: absolute;
+}
+
+.editor .text-down {
+    margin: 0;
 }
 
 /*--------About--------*/
