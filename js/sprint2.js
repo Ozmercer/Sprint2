@@ -149,7 +149,7 @@ function renderMemesByPopular() {
 
     for (var keyword in keywordRepMap) {
         elKeywords.innerHTML += `
-        <span style="font-size:${12 + 10 * (keywordRepMap[keyword])}px" 
+        <span style="font-size:${0.8 + 0.8 * (keywordRepMap[keyword])}em" 
         onclick="searchMeme(this,'${keyword}')">${keyword}</span>
         `
     }
