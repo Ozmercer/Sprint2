@@ -61,13 +61,13 @@
                         <!-- Canvas goes here -->
                     </canvas>
                     <div class="editor-controlers">
-                        <form onsubmit="return false">
-                            <input type="text" placeholder="Enter Text...">
+                        <!-- <form onsubmit="return false"> -->
+                            <input type="text" placeholder="Enter Text..." class="line-0" onkeyup="changeTxt(this)">
                             <input type="color" onchange="changeColor(this)">
-                            <button class="align-left" onclick="alignLeft()"><i class="fas fa-align-left"></i></button>
-                            <button class="align-center" onclick="alignCenter()" ><i class="fas fa-align-center"></i></button>
-                            <button class="align-right" onclick="alignRight()"><i class="fas fa-align-right"></i></button>
-                            <input list="fonts" name="font" onchange="changeFont(this)">
+                            <button class="align-left" onclick="alignTxt('left')"><i class="fas fa-align-left"></i></button>
+                            <button class="align-center" onclick="alignTxt('center')" ><i class="fas fa-align-center"></i></button>
+                            <button class="align-right" onclick="alignTxt('end')"><i class="fas fa-align-right"></i></button>
+                            <input list="fonts" name="font" onchange="changeFont(this)" placeholder="Arial">
                             <datalist id="fonts">
                                 <option value="Arial"></option>
                                 <option value="Times New Roman"></option>
@@ -89,7 +89,7 @@
                             <button class="text-down-0" onclick="moveTextDown(this)">Text Down</button>
                             <input type="text" placeholder="Enter Text...">
                             <button class="save-meme">Save</button>
-                        </form>
+                        <!-- </form> -->
                     </div>
                 </div>
             </div>

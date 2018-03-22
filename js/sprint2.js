@@ -151,16 +151,8 @@ function fillCanvas(elMeme) {
     }
 }
 
-function alignLeft() {
-    gMemesEditor.txts.forEach(function (txt) { txt.align = 'left' })
-    fillCanvas(this)
-}
-function alignCenter() {
-    gMemesEditor.txts.forEach(function (txt) { txt.align = 'center' })
-    fillCanvas(this)
-}
-function alignRight() {
-    gMemesEditor.txts.forEach(function (txt) { txt.align = 'end' })
+function alignTxt(direction) {
+    gMemesEditor.txts.forEach(function (txt) { txt.align = direction })
     fillCanvas(this)
 }
 function changeColor(elColor) {
@@ -168,7 +160,12 @@ function changeColor(elColor) {
     fillCanvas(this)
 }
 function changeFont(elFont) {
+    if (!elFont.value) return;
     gMemesEditor.txts.forEach(function (txt) { txt.font = elFont.value })
+    fillCanvas(this)
+}
+function changeTxt(elTxt) {
+    gMemesEditor.txts.forEach(function (txt) { txt.line = elTxt.value})
     fillCanvas(this)
 }
 
