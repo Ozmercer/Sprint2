@@ -111,6 +111,7 @@ nav {
 }
 
 /*--------Gallery--------*/
+
 main {
     background-color: #f6fffd;
 }
@@ -235,7 +236,12 @@ i {
     font-size: 0.5em;
 }
 
+.close-editor {
+    position: absolute;
+}
+
 /*--------About--------*/
+
 article.about {
     background-color: #2eb398;
     padding: 0 20px;
@@ -304,7 +310,7 @@ article.about {
     color: #ef558f
 }
 
-/* -------CONTACT------- */
+/*--------Contact--------*/
 
 .contact {
     background-color: #323232;
