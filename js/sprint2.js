@@ -19,10 +19,9 @@ function getMeme(url, keyWords, desc) {
 }
 
 
-keywordRepMap = getKeywordMap()
 
 function init() {
-
+    
     getMeme('../img/memes/1.png', ['high', 'happy', 'man', 'drink', 'funny'], '10 Guy')
     getMeme('../img/memes/2.png', ['dog', 'look', 'funny', 'pet', 'happy'], 'Doge')
     getMeme('../img/memes/3.png', ['cartoon', 'angry', 'man', 'why'], 'Y U No')
@@ -34,8 +33,9 @@ function init() {
     getMeme('../img/memes/9.png', ['cartoon', 'toys', 'look'], 'X, X Everywhere')
     getMeme('../img/memes/10.png', ['think', 'man', 'satisfied', 'clever', 'work', 'look', 'black'], 'Roll Safe Think About It')
     renderGallery();
+    keywordRepMap = getKeywordMap()
     renderMemesByPopular();
-
+    
     gMemesEditor = {
         selectedImgId: null,
         txts: [
@@ -89,17 +89,13 @@ function searchMeme(elInput, text) {
     if (text) filter = text.toUpperCase();
     else filter = elInput.value.toUpperCase();
 
-    console.log(filter);
     for (var i = 0; i < gMemes.length; i++) {
         var imgId = 'meme' + gMemes[i].id;
         var elImg = document.getElementById(imgId);
-        console.log(elImg);
         var words = gMemes[i].keyWords;
-        console.log(words);
 
         for (var j = 0; j < words.length; j++) {
             var word = words[j];
-            console.log(words[j]);
             if (word.toUpperCase().indexOf(filter) > -1) {
                 elImg.style.display = 'initial';
                 break;
@@ -129,6 +125,7 @@ function renderMemesByPopular() {
         onclick="searchMeme(this,'${keyword}')">${keyword}</span>
         `
     }
+    
 }
 
 function fillCanvas(elMeme) {
@@ -139,34 +136,28 @@ function fillCanvas(elMeme) {
     img.src = elMeme.src;
     myCanvas.width = img.width;
     myCanvas.height = img.height;
+    ctx.drawImage(img, 0, 0, myCanvas.width, myCanvas.height);
     img.onload = function () {
-        ctx.drawImage(img, 0, 0, myCanvas.width, myCanvas.height);
         for (var i = 0; i < gMemesEditor.txts.length; i++) {
-            fillText(ctx, img, i)
+            fillTxt(ctx, img, i)
         }
     };
 }
 
 function alignLeft() {
-    gMemesEditor.txts.forEach(function (txt) {
-        txt.align = 'left';
-    })
+    gMemesEditor.txts.forEach(function (txt) {txt.align = 'left'})
     fillCanvas(gCurrImgEl)
 }
 function alignCenter() {
-    gMemesEditor.txts.forEach(function (txt) {
-        txt.align = 'center';
-    })
+    gMemesEditor.txts.forEach(function (txt) {txt.align = 'center'})
     fillCanvas(gCurrImgEl)
 }
 function alignRight() {
-    gMemesEditor.txts.forEach(function (txt) {
-        txt.align = 'end';
-    })
+    gMemesEditor.txts.forEach(function (txt) {txt.align = 'end'})
     fillCanvas(gCurrImgEl)
 }
 
-function fillText(ctx, img, idx) {
+function fillTxt(ctx, img, idx) {
     var txtStart;
     if (gMemesEditor.txts[idx].align === 'left') txtStart = img.width * 0.05;
     else if (gMemesEditor.txts[idx].align === 'center') txtStart = img.width / 2;
@@ -177,7 +168,12 @@ function fillText(ctx, img, idx) {
     ctx.textAlign = gMemesEditor.txts[idx].align;
     ctx.font = `${gMemesEditor.txts[idx].size}px Arial`;
     ctx.fillStyle = gMemesEditor.txts[idx].color;
+    ctx.strokeStyle = 'black'
     ctx.fillText(gMemesEditor.txts[idx].line, txtStart, img.height * txtHight);
+    ctx.strokeText(gMemesEditor.txts[idx].line, txtStart, img.height * txtHight)
+
+    ctx.fill();
+    ctx.stroke();
 }
 
 function editor2() {
