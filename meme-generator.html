@@ -61,12 +61,21 @@
                         <!-- Canvas goes here -->
                     </canvas>
                     <div class="editor-controlers">
-                        <form>
+                        <form onsubmit="return false">
                             <input type="text" placeholder="Enter Text...">
-                            <input type="color">
+                            <input type="color" onchange="changeColor(this)">
                             <button class="align-left" onclick="alignLeft()"><i class="fas fa-align-left"></i></button>
                             <button class="align-center" onclick="alignCenter()" ><i class="fas fa-align-center"></i></button>
                             <button class="align-right" onclick="alignRight()"><i class="fas fa-align-right"></i></button>
+                            <input list="fonts" name="font" onchange="changeFont(this)">
+                            <datalist id="fonts">
+                                <option value="Arial"></option>
+                                <option value="Times New Roman"></option>
+                                <option value="Courier"></option>
+                                <option value="Georgia"></option>
+                                <option value="Comic Sans MS"></option>
+                                <option value="Impact"></option>
+                            </datalist>
                             <!-- TODO: Add Dropdown for font size -->
                             <button class="increase-size-0" onclick="increaseFontSize(this)">Increase Font Size</button>
                             <button class="decrease-size-0" onclick="decreaseFontSize(this)">Decrease Font Size</button>
