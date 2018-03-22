@@ -327,7 +327,9 @@ article.about {
 }
 
 .profile {
-    margin: 10px 0;
+    /* margin: 10px 0; */
+    flex-direction: column;
+    align-items: center;
 }
 
 .about img {
@@ -465,5 +467,9 @@ footer {
     }
     .keywords {
         font-size: 1em;
+    }
+    .profile {
+        flex-direction: row;
+        margin: 10px 0;
     }
 }
