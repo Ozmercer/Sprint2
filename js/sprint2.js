@@ -42,14 +42,18 @@ function init() {
                 line: 'Enter Text',
                 size: 80,
                 align: 'center',
-                color: 'white'
+                color: 'white',
+                shadow: '',
+                y_position: 0
             }
             ,
             {
                 line: 'Enter Text',
                 size: 80,
                 align: 'center',
-                color: 'white'
+                color: 'white',
+                shadow: '',
+                y_position: 0
             }]
     }
 }
@@ -130,30 +134,35 @@ function renderMemesByPopular() {
 
 function fillCanvas(elMeme) {
 
+
     var myCanvas = document.getElementById('canvas-editor');
     var ctx = myCanvas.getContext('2d');
+
     var img = new Image();
-    console.log(elMeme.src);
-    img.src = elMeme.src;
+    if (elMeme) img.src = elMeme.src;
+    else img.src = gCurrMeme.url;
+
     myCanvas.width = img.width;
     myCanvas.height = img.height;
+    ctx.drawImage(img, 0, 0, myCanvas.width, myCanvas.height);
     img.onload = function () {
-        ctx.drawImage(img, 0, 0, myCanvas.width, myCanvas.height); // Or at whatever offset you like
-        ctx.textAlign = gMemesEditor.txts[0].align;
-        ctx.font = `${gMemesEditor.txts[0].size}px Arial`;
-        ctx.fillStyle = gMemesEditor.txts[0].color;
-        ctx.fillText(gMemesEditor.txts[0].line, myCanvas.width / 2, myCanvas.height * 0.2);
-
-        ctx.textAlign = gMemesEditor.txts[1].align;
-        ctx.font = `${gMemesEditor.txts[1].size}px Arial`;
-        ctx.fillStyle = gMemesEditor.txts[1].color;
-        ctx.fillText(gMemesEditor.txts[1].line, myCanvas.width / 2, myCanvas.height * 0.9);
+        debugger;   
+        // Designating the image as the canvas with the width and height are those of the image
+        
+        for (var i = 0; i < gMemesEditor.txts.length; i++) {
+            ctx.textAlign = gMemesEditor.txts[i].align;
+            ctx.font = `${gMemesEditor.txts[i].size}px Arial`;
+            ctx.fillStyle = gMemesEditor.txts[i].color;
+            ctx.shadowBlur = 18;
+            ctx.shadowColor = gMemesEditor.txts[i].shadow;
+            if (i === 0) {
+                ctx.fillText(gMemesEditor.txts[i].line, myCanvas.width / 2, myCanvas.height * 0.2);
+            }
+            else {
+                ctx.fillText(gMemesEditor.txts[i].line, myCanvas.width / 2, myCanvas.height * 0.9);
+            }
+        }
     };
-
-
-    console.log(gMemesEditor);
-    console.log(gMemesEditor.txts[0].line);
-
 }
 
 function editor1() {
@@ -166,10 +175,52 @@ function editor1() {
 
 function editor2() {
     // //TODO
-    // Increase / decrease font size
+    // Increase / decrease font size`
     // Text shadow (on/off)
     // Move lines up/down by buttons
     // Save button
 }
 
+function increaseFontSize(elIncreaseBtn) {
+    var classAttribute = elIncreaseBtn.getAttribute('class');
+    var index = parseInt(classAttribute[classAttribute.length - 1]);
+
+    gMemesEditor.txts[index].size += 4;
+    fillCanvas(this);
+}
+
+function decreaseFontSize(elDecreaseBtn) {
+    var classAttribute = elDecreaseBtn.getAttribute('class');
+    var index = parseInt(classAttribute[classAttribute.length - 1]);
+
+    gMemesEditor.txts[index].size -= 4;
+    fillCanvas(this);
+}
+
+function addOrRemoveShadow(elShadowCeckBox) {
+    var classAttribute = elShadowCeckBox.getAttribute('class');
+    var index = parseInt(classAttribute[classAttribute.length - 1]);
+    var isChecked = elShadowCeckBox.checked;
+
+    if (isChecked) gMemesEditor.txts[index].shadow = 'red';
+    else gMemesEditor.txts[index].shadow = '';
+
+    fillCanvas(this);
+}
+
+// function decreaseFontSize(elMoveUpBtn) {
+//     var classAttribute = elMoveUpBtn.getAttribute('class');
+//     var index = parseInt(classAttribute[classAttribute.length - 1]);
+
+//     gMemesEditor.txts[index].size -= 4;
+//     fillCanvas(this);
+// }
+
+// function decreaseFontSize(elMoveDownBtn) {
+//     var classAttribute = elDecreaseBtn.getAttribute('class');
+//     var index = parseInt(classAttribute[classAttribute.length - 1]);
+
+//     gMemesEditor.txts[index].size -= 4;
+//     fillCanvas(this);
+// }
 

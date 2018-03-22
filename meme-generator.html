@@ -38,6 +38,7 @@
     </header>
 
     <main class="gallery">
+
         <section class="container galley-container">
             <input class="search-box" type="text" placeholder="Search Meme..." onkeyup="searchMeme(this)">
             <!-- TODO: Select all button to display all -->
@@ -50,13 +51,11 @@
             </div>
             <!-- TODO: accept new img by url -->
         </section>
+
         <section class="editor hide" id="editor">
             <div class="container editor-container">
                 <h2>Meme Editor</h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim corrupti consequatur harum excepturi doloremque
-                    similique ipsa sed explicabo nihil quam. Harum veritatis, suscipit exercitationem ipsum incidunt nesciunt
-                    a officiis dolores.
-                </p>
+
                 <div class="canvas-container container flex">
                     <canvas id="canvas-editor">
                         <!-- Canvas goes here -->
@@ -69,10 +68,16 @@
                             <button class="align-center">Center</button>
                             <button class="align-right">Right</button>
                             <!-- TODO: Add Dropdown for font size -->
-                            <button class="text-shadow">Text Shadow</button>
+                            <button class="increase-size-0" onclick="increaseFontSize(this)">Increase Font Size</button>
+                            <button class="decrease-size-0" onclick="decreaseFontSize(this)">Decrease Font Size</button>
+                            <br>
+                            <br>
+                            <span>Text Shadow</span>
+                            <input type="checkbox" class="shadow-0" onclick="addOrRemoveShadow(this)">
+                            <br>
                             <!-- TODO: Add Dropdown for font type -->
-                            <button class="text-up">Text Up</button>
-                            <button class="text-down">Text Down</button>
+                            <button class="text-up-0" onclick="moveTextUp(this)">Text Up</button>
+                            <button class="text-down-0" onclick="moveTextDown(this)">Text Down</button>
                             <input type="text" placeholder="Enter Text...">
                             <button class="save-meme">Save</button>
                         </form>

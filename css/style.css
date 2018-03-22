@@ -103,7 +103,7 @@ nav {
     border-top: 100px solid red;
 }
 
-/* -----GALLERY----- */
+/*--------Gallery--------*/
 
 .search-box {
     width: 20%;
@@ -148,7 +148,8 @@ nav {
     margin: 0 5px;
 }
 
-/* ----CANVAS---- */
+/*--------Canvas--------*/
+
 .canvas .meme {
     border: 5px solid mediumseagreen;
     height: auto;
@@ -160,7 +161,7 @@ canvas {
     max-height: 450px;
 }
 
-/* -----ABOUT----- */
+/*--------About--------*/
 article.about {
     background-color: #2eb398;
     padding: 0 20px;
