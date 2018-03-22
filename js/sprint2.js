@@ -18,7 +18,6 @@ function getMeme(url, keyWords, desc) {
 }
 
 
-keywordRepMap = getKeywordMap()
 
 function init() {
 
@@ -33,13 +32,14 @@ function init() {
     getMeme('../img/memes/9.png', ['cartoon', 'toys', 'look'], 'X, X Everywhere')
     getMeme('../img/memes/10.png', ['think', 'man', 'satisfied', 'clever', 'work', 'look', 'black'], 'Roll Safe Think About It')
     renderGallery();
+    keywordRepMap = getKeywordMap()
     renderMemesByPopular();
 
     gMemesEditor = {
         selectedImgId: null,
         txts: [
             {
-                line: 'Enter Text',
+                line: 'Text',
                 size: 80,
                 align: 'center',
                 color: 'white',
@@ -68,7 +68,8 @@ function renderMeme(meme, selector) {
     var elMemes = document.querySelector(selector);
     var newHtml = `
         <div class="meme" id="meme${meme.id}" onclick="openEditor(${meme.id})" href="#editor">
-            <a href="#editor"><img src="${meme.url}" title="${meme.desc}" onclick="fillCanvas(this)"></a>
+            <a href="#editor"><img src="${meme.url}" title="${meme.desc}" 
+            onclick="fillCanvas(this)"></a>
         </div>
     `;
     elMemes.innerHTML += newHtml;
@@ -83,6 +84,7 @@ function openEditor(memeId) {
     gCurrMeme = gMemes.find(function (meme) {
         return meme.id === memeId
     })
+    gMemesEditor.selectedImgId = gCurrMeme.id;
 }
 
 function searchMeme(elInput, text) {
@@ -90,17 +92,13 @@ function searchMeme(elInput, text) {
     if (text) filter = text.toUpperCase();
     else filter = elInput.value.toUpperCase();
 
-    console.log(filter);
     for (var i = 0; i < gMemes.length; i++) {
         var imgId = 'meme' + gMemes[i].id;
         var elImg = document.getElementById(imgId);
-        console.log(elImg);
         var words = gMemes[i].keyWords;
-        console.log(words);
 
         for (var j = 0; j < words.length; j++) {
             var word = words[j];
-            console.log(words[j]);
             if (word.toUpperCase().indexOf(filter) > -1) {
                 elImg.style.display = 'initial';
                 break;
@@ -130,15 +128,16 @@ function renderMemesByPopular() {
         onclick="searchMeme(this,'${keyword}')">${keyword}</span>
         `
     }
+
 }
 
 function fillCanvas(elMeme) {
-
 
     var myCanvas = document.getElementById('canvas-editor');
     var ctx = myCanvas.getContext('2d');
 
     var img = new Image();
+
     if (elMeme) img.src = elMeme.src;
     else img.src = gCurrMeme.url;
 
@@ -146,31 +145,44 @@ function fillCanvas(elMeme) {
     myCanvas.height = img.height;
     ctx.drawImage(img, 0, 0, myCanvas.width, myCanvas.height);
     img.onload = function () {
-        debugger;   
-        // Designating the image as the canvas with the width and height are those of the image
-        
         for (var i = 0; i < gMemesEditor.txts.length; i++) {
-            ctx.textAlign = gMemesEditor.txts[i].align;
-            ctx.font = `${gMemesEditor.txts[i].size}px Arial`;
-            ctx.fillStyle = gMemesEditor.txts[i].color;
-            ctx.shadowBlur = 18;
-            ctx.shadowColor = gMemesEditor.txts[i].shadow;
-            if (i === 0) {
-                ctx.fillText(gMemesEditor.txts[i].line, myCanvas.width / 2, myCanvas.height * 0.2);
-            }
-            else {
-                ctx.fillText(gMemesEditor.txts[i].line, myCanvas.width / 2, myCanvas.height * 0.9);
-            }
+            fillTxt(ctx, img, i)
         }
     };
 }
 
-function editor1() {
-    // // TODO
-    // Align left, right, center
-    // Text color
-    // Select font
-    // Add / Delete txts
+function alignLeft() {
+    gMemesEditor.txts.forEach(function (txt) { txt.align = 'left' })
+    fillCanvas(this)
+}
+function alignCenter() {
+    gMemesEditor.txts.forEach(function (txt) { txt.align = 'center' })
+    fillCanvas(this)
+}
+function alignRight() {
+    gMemesEditor.txts.forEach(function (txt) { txt.align = 'end' })
+    fillCanvas(this)
+}
+
+function fillTxt(ctx, img, idx) {
+    var txtStart;
+    if (gMemesEditor.txts[idx].align === 'left') txtStart = img.width * 0.05;
+    else if (gMemesEditor.txts[idx].align === 'center') txtStart = img.width / 2;
+    else txtStart = img.width * 0.95
+
+    var txtHight = (idx) ? 0.9 : 0.2;
+
+    ctx.textAlign = gMemesEditor.txts[idx].align;
+    ctx.font = `${gMemesEditor.txts[idx].size}px Arial`;
+    ctx.fillStyle = gMemesEditor.txts[idx].color;
+    ctx.strokeStyle = 'black';
+    ctx.shadowBlur = 18;
+    ctx.shadowColor = gMemesEditor.txts[idx].shadow;
+    ctx.fillText(gMemesEditor.txts[idx].line, txtStart, img.height * txtHight);
+    ctx.strokeText(gMemesEditor.txts[idx].line, txtStart, img.height * txtHight)
+
+    ctx.fill();
+    ctx.stroke();
 }
 
 function editor2() {
