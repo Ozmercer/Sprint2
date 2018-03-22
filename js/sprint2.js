@@ -261,8 +261,6 @@ function decreaseFontSize() {
 
 function addOrRemoveShadow(elShadowCeckBox) {
     var isChecked = elShadowCeckBox.checked;
-
-
     if (gTextId > -1) {
         if (isChecked) gMemesEditor.txts[gTextId].shadow = 'black';
         else gMemesEditor.txts[gTextId].shadow = 'rgba(0,0,0,0)';
