@@ -49,10 +49,11 @@ p {
 
 .hide {
     display: none;
-    /* height: 0;
-    position: absolute;
-    visibility: hidden;
-    transition: all 0.5s; */
+}
+
+::placeholder {
+    color: #92c1b7;
+    padding: 10px;
 }
 
 /*--------Layout--------*/
@@ -73,6 +74,7 @@ header {
     font-family: 'latoBold', sans-serif;
     line-height: 6.32px;
     text-transform: uppercase;
+    height: 63px;
 }
 
 nav {
@@ -86,21 +88,26 @@ nav {
     width: 70px;
 }
 
+.top-menu li:hover {
+    color: #00ffcb;
+}
+
 .logo-holder {
     position: relative;
+    min-width: 70px;
+}
+
+.top-menu .hexagon {
+    top: 0%;
+    z-index: 0;
+    width: 63px;
+    left: 1%;
 }
 
 .top-menu li img {
-    position: relative;
     top: 1.5%;
-}
-
-.triangle-down {
-	width: 0;
-	height: 0;
-	border-left: 50px solid transparent;
-	border-right: 50px solid transparent;
-    border-top: 100px solid red;
+    z-index: 24;
+    position: absolute;
 }
 
 /*--------Gallery--------*/
@@ -129,14 +136,14 @@ main {
 }
 
 .galley-container .meme {
-    height: 150px;
-    max-width: 150px;
+    height: 120px;
+    max-width: 120px;
     overflow: hidden;
     margin: 10px 0;
     cursor: pointer;
 }
 .galley-container img {
-    height: 150px;
+    height: 120px;
     width: auto;
 }
 
@@ -155,6 +162,11 @@ main {
 .keywords span {
     margin: 0 5px;
 }
+.keywords span:hover {
+    color: #1bc4a2;
+    transition: all 0.2s;
+    cursor: pointer;
+}
 
 /*--------Canvas--------*/
 
@@ -165,20 +177,62 @@ main {
 }
 canvas {
     border: 1px solid #005846;    
-    max-width: 400px;
-    max-height: 400px;
+    max-width: 450px;
+    max-height: 450px;
+}
+
+
+/* ----Editor---- */
+
+.editor input {
+    border-radius: 10px;
+}
+.editor input[type="checkbox"] {
+    width: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.editor button {
+    border: none;
+    background: #c4e2db;
+    padding: 5px;
+    margin: 4px 4px;
+    border-radius: 10px;
+}
+.editor input[type='color'] {
+    width: 40px;
+    height: 25px;
+    margin: 0;
+    border-radius: 5px
+}
+.editor input[type='text'] {
+    color: #24574b;
+    padding: 10px;
+}
+.editor input[type='checkbox'] {
+    display: inline;  
 }
 
 .editor-controlers {
     margin: 0 20px;
 }
-
-.editor-controlers input {
-    background-color: #15604f;
+i {
+    height: 15px;
+    width: 15px;
 }
 
-::placeholder {
-    color: #92c1b7;
+.editor-controlers input {
+    background-color: #c4e2db;
+}
+
+.editor ::placeholder {
+    color: #7faaa1;
+    padding: 10px;
+}
+
+.font-down {
+    font-size: 0.5em;
 }
 
 /*--------About--------*/

@@ -17,7 +17,7 @@
             <nav>
                 <ul class="top-menu clean-list flex space-between">
                     <li>
-                        <a class="flex justify-center align-center" href="#">Portfolio</a>
+                        <a class="flex justify-center align-center" href="#">Gallery</a>
                     </li>
                     <li>
                         <a class="flex justify-center align-center" href="#">About</a>
@@ -25,9 +25,10 @@
                     <li class="logo-holder">
                         <!-- <div class="triangle-down"></div> -->
                         <img src="img/logo.png">
+                        <img class="hexagon" src="img/hexagon.png">
                     </li>
                     <li>
-                        <a class="flex justify-center align-center" href="#">Blog</a>
+                        <a class="flex justify-center align-center" href="#">Contact</a>
                     </li>
                     <li>
                         <a class="flex justify-center align-center" href="#">Get in touch</a>
@@ -67,7 +68,9 @@
                             <button class="align-left" onclick="alignTxt('left')"><i class="fas fa-align-left"></i></button>
                             <button class="align-center" onclick="alignTxt('center')" ><i class="fas fa-align-center"></i></button>
                             <button class="align-right" onclick="alignTxt('end')"><i class="fas fa-align-right"></i></button>
-                            <input list="fonts" name="font" onchange="changeFont(this)" placeholder="Arial">
+                            <button class="increase-size-0 font-up" onclick="increaseFontSize(this)"><i class="fas fa-font"></i></button>
+                            <button class="decrease-size-0 font-down" onclick="decreaseFontSize(this)"><i class="fas fa-font"></i></button>
+                            <input list="fonts" name="font" onkeyup="changeFont(this)" onfocus="clearValue(this)" placeholder="Change text...">
                             <datalist id="fonts">
                                 <option value="Arial"></option>
                                 <option value="Times New Roman"></option>
@@ -77,12 +80,10 @@
                                 <option value="Impact"></option>
                             </datalist>
                             <!-- TODO: Add Dropdown for font size -->
-                            <button class="increase-size-0" onclick="increaseFontSize(this)">Increase Font Size</button>
-                            <button class="decrease-size-0" onclick="decreaseFontSize(this)">Decrease Font Size</button>
                             <br>
                             <br>
-                            <span>Text Shadow</span>
-                            <input type="checkbox" class="shadow-0" onclick="addOrRemoveShadow(this)">
+                            <div> <span class="shadow">Text Shadow</span> 
+                            <input type="checkbox" class="shadow-0" onclick="addOrRemoveShadow(this)"></div>
                             <br>
                             <!-- TODO: Add Dropdown for font type -->
                             <button class="text-up-0" onclick="moveTextUp(this)">Text Up</button>

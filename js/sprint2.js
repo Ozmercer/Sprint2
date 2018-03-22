@@ -26,11 +26,12 @@ function init() {
     getMeme('../img/memes/3.png', ['cartoon', 'angry', 'man', 'why'], 'Y U No')
     getMeme('../img/memes/4.png', ['cartoon', 'man', 'futurama', 'think'], 'Futurama Fry')
     getMeme('../img/memes/5.png', ['man', 'satisfied', 'cheers', 'drink', 'tuxedo'], 'Leonardo Dicaprio Cheers')
-    getMeme('../img/memes/6.png', ['cartoon', 'comics', 'angry', 'funny', 'work', 'look'], 'Boardroom Meeting Suggestion')
+    getMeme('../img/memes/6.png', ['cartoon', 'comics', 'angry', 'funny', 'work', 'look', 'woman', 'high'], 'Boardroom Meeting Suggestion')
     getMeme('../img/memes/7.png', ['cartoon', 'comics', 'angry', 'funny', 'slap'], 'Batman Slapping Robin')
     getMeme('../img/memes/8.png', ['black', 'get', 'prize', 'shout', 'woman'], 'Oprah You Get A')
     getMeme('../img/memes/9.png', ['cartoon', 'toys', 'look'], 'X, X Everywhere')
     getMeme('../img/memes/10.png', ['think', 'man', 'satisfied', 'clever', 'work', 'look', 'black'], 'Roll Safe Think About It')
+    getMeme('../img/memes/11.png', ['point', 'man', 'trump', 'clever','happy'], 'Trump pointing')
     renderGallery();
     keywordRepMap = getKeywordMap()
     renderMemesByPopular();
@@ -210,7 +211,7 @@ function addOrRemoveShadow(elShadowCeckBox) {
     var index = parseInt(classAttribute[classAttribute.length - 1]);
     var isChecked = elShadowCeckBox.checked;
 
-    if (isChecked) gMemesEditor.txts[index].shadow = 'red';
+    if (isChecked) gMemesEditor.txts[index].shadow = 'black';
     else gMemesEditor.txts[index].shadow = 'rgba(0,0,0,0)';
 
     fillCanvas(this);
@@ -238,3 +239,6 @@ function saveCanvasAsPNG(elSaveLnk) {
     elSaveLnk.href = dataURL;
 }
 
+function clearValue(elInput) {
+    elInput.value = ''
+}
