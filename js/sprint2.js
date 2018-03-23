@@ -324,3 +324,8 @@ function addURL() {
     getMeme(url, [], '');
     renderGallery();
 }
+
+function sendMail() {
+    var elModal = document.querySelector('.modal');
+    elModal.classList.toggle('hide');
+}
