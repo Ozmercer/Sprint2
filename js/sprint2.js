@@ -302,7 +302,7 @@ function moveTextDown() {
 
 function saveCanvasAsPNG(elSaveLnk) {
     var canvas = document.querySelector('canvas');
-    var dataURL = canvas.toDataURL('image/png');
+    var dataURL = canvas.toDataURL('./image/png');
     elSaveLnk.href = dataURL;
 }
 
